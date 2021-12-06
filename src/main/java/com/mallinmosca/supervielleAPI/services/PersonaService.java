@@ -25,11 +25,6 @@ public class PersonaService {
 	public PersonaModel savePersona(PersonaModel persona) {
 		return personaRepository.save(persona);
 	}
-	public PersonaModel saveIdPadre(PersonaModel oHijo, PersonaModel oPadre) {
-		oHijo.setIdPadre(oPadre.getId());
-		personaRepository.save(oHijo);
-		return oHijo;
-	}
 	
 	public boolean deletePersona(Long id) {
 		try {

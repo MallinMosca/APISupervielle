@@ -73,48 +73,7 @@ public class PersonaController {
 		return json;
 	}
 	
-	@GetMapping( path = "/relaciones/{id1}/{id2}")
-	public String getRelacion(@PathVariable("id1") Long id1, @PathVariable("id2") Long id2) {
-		String relacion;
-		Optional<PersonaModel> persona1 = this.personaService.getPersonaById(id1);
-		Optional<PersonaModel> persona2 = this.personaService.getPersonaById(id2);
-		PersonaModel p1 = persona1.get();
-		PersonaModel p2 = persona2.get();
-		Long idAbuelo1 = Long.valueOf(0);
-		Long idAbuelo2= Long.valueOf(0);
-		boolean ok = true;
-		if(p1.getIdPadre() != null) {
-			Optional<PersonaModel> padre = this.personaService.getPersonaById(p1.getIdPadre());
-			PersonaModel padre1 = padre.get();
-			idAbuelo1 = padre1.getIdPadre();
-		}else {
-			ok = false;
-		}
-		if(p2.getIdPadre() != null) {
-			Optional<PersonaModel> padre2 = this.personaService.getPersonaById(p2.getIdPadre());
-			PersonaModel oPadre2 = padre2.get();
-			idAbuelo2 = oPadre2.getIdPadre();
-		}else {
-			ok = false;
-		}
-		
-		if(ok) {
-			if(p1.getIdPadre() == p2.getIdPadre()) {//SI SON HIJOS DEL MISMO PADRE
-				relacion = "HERMAN@";
-			}else if(idAbuelo1 == p2.getIdPadre()) {//SI EL ABUELO DE PERSONA1 ES EL PADRE DE PERSONA2
-				relacion = "TI@";
-			}else if(idAbuelo1 == idAbuelo2) {
-				relacion = "PRIM@";
-			}else {
-				relacion = "Las personas indicadas no guardan relación entre si.";
-			}
-		}else {
-			relacion = "Las personas indicadas no guardan relación entre si.";
-		}
-		
-		
-		return relacion;
-	}
+
 	
 	
 	
@@ -150,7 +109,6 @@ public class PersonaController {
 			grabar = false;
 			msg = "Debe indicar al menos un dato de contacto";
 		}
-		 
 		
 		if(grabar) {
 			this.personaService.savePersona(persona);
@@ -162,22 +120,7 @@ public class PersonaController {
 		
 	}
 	
-	@PostMapping(path = "/personas/{id1}/padre/{id2}")
-	public boolean saveRelacion(@PathVariable("id1") Long id1, @PathVariable("id2") Long id2) {
-		try {
-			Optional<PersonaModel> persona2 = this.personaService.getPersonaById(id2);
-			Optional<PersonaModel> persona1 = this.personaService.getPersonaById(id1);
-			PersonaModel padre = persona1.get();
-			PersonaModel hijo = persona2.get();
-			
-			this.personaService.saveIdPadre(hijo, padre);
-			return true;
-		}catch(Exception err) {
-			System.out.print(err);
-			return false;
-		}
-		
-	}
+
 	
 	@DeleteMapping(path= "/{id}")
 	public String deletePersonaById(@PathVariable("id") Long id) {

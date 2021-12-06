@@ -18,7 +18,6 @@ public class PersonaModel {
 	private String nroDoc;
 	private String pais;
 	private String sexo;
-	private Long idPadre;
 	private String telefono;
 	private String email;
 	
@@ -78,11 +77,5 @@ public class PersonaModel {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public Long getIdPadre() {
-		return idPadre;
-	}
-	public void setIdPadre(Long idPadre) {
-		this.idPadre = idPadre;
 	}
 }
