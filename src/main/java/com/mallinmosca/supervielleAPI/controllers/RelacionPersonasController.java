@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mallinmosca.supervielleAPI.models.PersonaModel;
-import com.mallinmosca.supervielleAPI.models.RelacionPersonasModel;
 import com.mallinmosca.supervielleAPI.services.PersonaService;
 import com.mallinmosca.supervielleAPI.services.RelacionPersonasService;
 
@@ -26,7 +25,7 @@ public class RelacionPersonasController {
 	@Autowired
 	PersonaService personaService;
 	
-    @ApiOperation(value = "Obtiene el parentezco entre id1 e id2")
+    @ApiOperation(value = "Obtiene el parentezco entre la persona de id1 y la persona de id2")
 	@GetMapping( path = "/relaciones/{id1}/{id2}")
 	public String getRelacion(@PathVariable("id1") Long id1, @PathVariable("id2") Long id2) {
 		
@@ -43,6 +42,7 @@ public class RelacionPersonasController {
 		
 	}
 
+    @ApiOperation(value = "Establece que la persona de id1 es padre de la persona id2")
 	@PostMapping(path = "/{id1}/padre/{id2}")
 	public boolean saveRelacion(@PathVariable("id1") Long id1, @PathVariable("id2") Long id2) {
 		try {
