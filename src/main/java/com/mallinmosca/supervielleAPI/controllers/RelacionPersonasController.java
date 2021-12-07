@@ -71,9 +71,9 @@ public class RelacionPersonasController {
 				if(res.equals("")) {
 					if(idPadre1 == idPadre2) {//SI SON HIJOS DEL MISMO PADRE
 						res = "HERMAN@";
-					}else if(idPadre1 == idAbuelo2) {//SI EL ABUELO DE PERSONA1 ES EL PADRE DE PERSONA2
+					}else if(idPadre1 == idAbuelo2) {//SI EL PADRE DE PERSONA1 ES EL ABUELO DE PERSONA2
 						res = "TI@";
-					}else if(idAbuelo1 == idAbuelo2) {//SI AMBAS TIENEN EL MISMO ABUELO
+					}else if(idAbuelo1 > 0 && idAbuelo2 > 0 && idAbuelo1 == idAbuelo2) {//SI AMBAS TIENEN ABUELO Y ES EL MISMO
 						res = "PRIM@";
 					}else {
 						res = "Las personas indicadas no guardan relación entre si.";
