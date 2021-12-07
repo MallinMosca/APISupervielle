@@ -22,5 +22,7 @@ public class SwaggerConfig {
                                     .apis(RequestHandlerSelectors.basePackage("com.mallinmosca.supervielleAPI"))
                                     .paths(PathSelectors.any())
                                     .build();
-                }
+            }
+            
+   
 }

@@ -15,10 +15,11 @@ public class SupervielleApiApplication {
 		SpringApplication.run(SupervielleApiApplication.class, args);
 	}
 	
+	
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
  
            registry.addResourceHandler("swagger-ui.html")
-                    .addResourceLocations("classpath:/META-INF/resources/");
+                   .addResourceLocations("classpath:/META-INF/resources/");
  
     }
 
