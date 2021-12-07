@@ -76,7 +76,7 @@ public class RelacionPersonasController {
 					}else if(idAbuelo1 > 0 && idAbuelo2 > 0 && idAbuelo1 == idAbuelo2) {//SI AMBAS TIENEN ABUELO Y ES EL MISMO
 						res = "PRIM@";
 					}else {
-						res = "Las personas indicadas no guardan relación entre si.";
+						res = "Las personas indicadas no guardan poseen ninguna relación de las indicadas entre si.";
 					}
 				}
 					
